@@ -132,10 +132,45 @@
           <th>{{ Str::slug($elem->title_project, '-') }}</th>
           <th>{{ $elem->client }}</th>
           <th>
-            <a href="{{ route('admin.projects.show', $elem) }}" class="btn btn-primary bg-primary-subtle text-primary">
-              <i class="fa-regular fa-eye text-primary me-2"></i>
-              Show
+            <a href="{{ route('admin.projects.show', $elem) }}" class="btn btn-primary bg-primary-subtle text-primary me-2">
+              <i class="fa-regular fa-eye text-primary"></i>
             </a>
+            <a href="{{ route('admin.projects.edit', $elem) }}" class="btn btn-warning bg-warning-subtle text-warning me-2">
+              <i class="fa-solid fa-pencil text-warning"></i>
+            </a>
+            <button type="button" class="btn btn-danger bg-danger-subtle text-danger me-2" data-bs-toggle="modal" data-bs-target="#deletModal">
+              <i class="fa-regular fa-trash-can text-danger"></i>
+            </button>
+            <div class="modal fade" id="deletModal" tabindex="-1" aria-labelledby="deletModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure you want to delete the project?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container d-flex text-center justify-content-center mt-3 mb-3">
+                      <i class="fa-solid fa-triangle-exclamation text-danger fs-3"></i>
+                    </div>
+                    After deletion, it will no longer be possible to recover the project.
+                  </div>
+                  <div class="modal-footer justify-content-start">
+                    <form action="{{ route('admin.projects.destroy', $elem) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger bg-danger-subtle text-danger me-2">
+                        <i class="fa-regular fa-trash-can text-danger me-2"></i>
+                        Delete
+                      </button>
+                    </form>
+                    <button type="button" class="btn btn-secondary bg-secondary-subtle text-secondary me-2" data-bs-toggle="modal" data-bs-dismiss="modal">
+                      <i class="fa-solid fa-xmark text-secondary me-2"></i>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </th>
         </tr>
       @endforeach
