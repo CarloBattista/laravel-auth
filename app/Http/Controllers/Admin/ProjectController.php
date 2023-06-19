@@ -40,7 +40,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        $new_Project = new Project();
+        $new_Project->fill($form_data);
+        $new_Project->save();
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -63,7 +69,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('admin.projects.index', compact('project'));
     }
 
     /**
@@ -73,9 +80,12 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $form_data = $request->all();
+        $project->update($form_data);
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
