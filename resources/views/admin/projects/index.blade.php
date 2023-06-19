@@ -126,14 +126,14 @@
           <th>{{ $elem->slug }}</th>
           <th>{{ $elem->client }}</th>
           <th>
-            <button type="button" class="btn btn-primary">
-              <i class="fa-regular fa-eye"></i>
+            <button type="button" class="btn btn-primary bg-primary-subtle">
+              <i class="fa-regular fa-eye text-primary"></i>
             </button>
-            <button type="button" class="btn btn-warning">
-              <i class="fa-solid fa-pencil"></i>
+            <button type="button" class="btn btn-warning bg-warning-subtle">
+              <i class="fa-solid fa-pencil text-warning"></i>
             </button>
-            <button type="button" class="btn btn-danger">
-              <i class="fa-regular fa-trash-can"></i>
+            <button type="button" class="btn btn-danger bg-danger-subtle">
+              <i class="fa-regular fa-trash-can text-danger"></i>
             </button>
           </th>
         </tr>
