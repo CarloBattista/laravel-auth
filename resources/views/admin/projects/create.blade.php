@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 
 @section('titlePage')
-  Carlo Battista - Portfolio
+  Carlo Battista - Create
 @endsection
 
 @section('content')
@@ -107,39 +107,30 @@
         </div>
     </div>
 </nav>
-<div class="container mt-3">
-  <a href="{{ route('admin.projects.create') }}" class="btn btn-primary bg-success-subtle border-success text-success">
-    <i class="fa-solid fa-plus text-success"></i>
-    Create project
-  </a>
-</div>
 <div class="container mt-5">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Title Project</th>
-        <th scope="col">Description Project</th>
-        <th scope="col">Slug</th>
-        <th scope="col">Client</th>
-        <th scope="col">Functions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($projects as $elem)
-        <tr>
-          <th>{{ $elem->title_project }}</th>
-          <th>{{ $elem->description_project }}</th>
-          <th>{{ Str::slug($elem->title_project, '-') }}</th>
-          <th>{{ $elem->client }}</th>
-          <th>
-            <a href="{{ route('admin.projects.show', $elem) }}" class="btn btn-primary bg-primary-subtle text-primary">
-              <i class="fa-regular fa-eye text-primary me-2"></i>
-              Show
-            </a>
-          </th>
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
+  <h2>Create Project</h2>
+  <div class="container-fluid mt-4">
+    <form action="{{ route('admin.projects.store')}}" method="POST">
+        @csrf
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Change title project" name="title_project" max="255">
+            <label for="floatingInput">Title Project</label>
+        </div>
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Change description project" id="floatingTextarea2" name="description_project" style="height: 100px"></textarea>
+          <label for="floatingTextarea2">Description Project</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Change image hero" name="image">
+            <label for="floatingInput">URL: Image Hero Project</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Change client name" name="client">
+            <label for="floatingInput">Client Name</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Create project</button>
+    </form>
+  </div>
 </div>
 @endsection
