@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 
 @section('titlePage')
-  Carlo Battista - Portfolio
+  Carlo Battista - {{ $project->title_project }}
 @endsection
 
 @section('content')
@@ -108,37 +108,6 @@
     </div>
 </nav>
 <div class="container mt-5">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Title Project</th>
-        <th scope="col">Description Project</th>
-        <th scope="col">Slug</th>
-        <th scope="col">Client</th>
-        <th scope="col">Functions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($projects as $elem)
-        <tr>
-          <th>{{ $elem->title_project }}</th>
-          <th>{{ $elem->description_project }}</th>
-          <th>{{ $elem->slug }}</th>
-          <th>{{ $elem->client }}</th>
-          <th>
-            <a href="{{ route('admin.projects.show', $elem) }}" class="btn btn-primary bg-primary-subtle">
-              <i class="fa-regular fa-eye text-primary"></i>
-            </a>
-            <a href="" class="btn btn btn-warning bg-warning-subtle">
-              <i class="fa-solid fa-pencil text-warning"></i>
-            </a>
-            <button type="button" class="btn btn-danger bg-danger-subtle">
-              <i class="fa-regular fa-trash-can text-danger"></i>
-            </button>
-          </th>
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
+  
 </div>
 @endsection
