@@ -118,6 +118,10 @@
             <label for="floatingInput">Title Project</label>
         </div>
         <div class="form-floating mb-3">
+          <input type="text" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="Slug" name="slug" value="">
+          <label for="floatingPlaintextInput">Slug automatic compilation</label>
+        </div>
+        <div class="form-floating mb-3">
           <textarea class="form-control" placeholder="Change description project" id="floatingTextarea2" name="description_project" style="height: 100px"></textarea>
           <label for="floatingTextarea2">Description Project</label>
         </div>
@@ -133,4 +137,26 @@
     </form>
   </div>
 </div>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    let formControl = document.getElementById('floatingInput');
+        let formControlPlaintext = document.getElementById('floatingPlaintextInput');
+
+        function generateSlug(value) {
+            return value.trim().toLowerCase().replace(/\s+/g, '-');
+        }
+
+        formControl.addEventListener('input', function() {
+            let inputValue = formControl.value;
+            let slug = generateSlug(inputValue);
+            formControlPlaintext.value = slug;
+        });
+
+        // Genera lo slug iniziale al caricamento della pagina
+        let initialInputValue = formControl.value;
+        let initialSlug = generateSlug(initialInputValue);
+        formControlPlaintext.value = initialSlug;
+    });
+</script>
 @endsection
