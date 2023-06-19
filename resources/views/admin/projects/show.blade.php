@@ -108,6 +108,13 @@
     </div>
 </nav>
 <div class="container mt-5">
-  
+  <div class="container">
+    <img src="{{ $project->image }}" class="img-fluid rounded-3" alt="{{ $project->title_project }} hero image">
+  </div>
+  <div class="container mt-5">
+    <h4>{{ $project->title_project }}</h4>
+    <h6><span class="text-secondary">For:</span> {{ $project->client }}</h6>
+    <p>{{ $project->description_project }}</p>
+  </div>
 </div>
 @endsection
