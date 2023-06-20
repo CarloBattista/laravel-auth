@@ -132,13 +132,13 @@
           <th>{{ Str::slug($elem->title_project, '-') }}</th>
           <th>{{ $elem->client }}</th>
           <th>
-            <a href="{{ route('admin.projects.show', $elem) }}" class="btn btn-primary bg-primary-subtle text-primary me-2">
+            <a href="{{ route('admin.projects.show', $elem) }}" class="btn btn-primary bg-primary-subtle text-primary me-2 mb-2">
               <i class="fa-regular fa-eye text-primary"></i>
             </a>
-            <a href="{{ route('admin.projects.edit', $elem) }}" class="btn btn-warning bg-warning-subtle text-warning me-2">
+            <a href="{{ route('admin.projects.edit', $elem) }}" class="btn btn-warning bg-warning-subtle text-warning me-2 mb-2">
               <i class="fa-solid fa-pencil text-warning"></i>
             </a>
-            <button type="button" class="btn btn-danger bg-danger-subtle text-danger me-2" data-bs-toggle="modal" data-bs-target="#deletModal">
+            <button type="button" class="btn btn-danger bg-danger-subtle text-danger me-2 mb-2" data-bs-toggle="modal" data-bs-target="#deletModal">
               <i class="fa-regular fa-trash-can text-danger"></i>
             </button>
             <div class="modal fade" id="deletModal" tabindex="-1" aria-labelledby="deletModal" aria-hidden="true">
