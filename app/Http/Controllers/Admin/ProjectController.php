@@ -47,15 +47,18 @@ class ProjectController extends Controller
         $form_data = $request->all();
 
         $new_Project = new Project();
-        $new_Project->fill($form_data);
-        $new_Project->save();
-
         if( $request->hasFile('project_image') ) {
 
             $imagePath = Storage::disk('public')->put('project_images', $request->project_image);
 
             $form_data['project_image'] = $imagePath;
         }
+
+        $new_Project->fill($form_data);
+        
+        $new_Project->save();
+        
+
 
         return redirect()->route('admin.projects.index');
     }

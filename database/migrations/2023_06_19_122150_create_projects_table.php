@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('title_project');
             $table->text('description_project');
             $table->string('slug');
-            $table->text('image')->nullable();
             $table->string('project_image')->nullable();
             $table->string('client');
             $table->timestamps();
