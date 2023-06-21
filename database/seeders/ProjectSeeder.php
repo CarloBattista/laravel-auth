@@ -26,6 +26,7 @@ class ProjectSeeder extends Seeder
             $newComic->description_project = $elem['description_project'];
             $newComic->slug = Str::slug($newComic->title_project, '-');
             $newComic->image = $elem['image'];
+            $newComic->project_image = $elem['project_image'];
             $newComic->client = $elem['client'];
             $newComic->save();
         }

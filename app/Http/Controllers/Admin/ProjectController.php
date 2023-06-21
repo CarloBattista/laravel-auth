@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Admin\Project;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller
 {
     /**
@@ -47,6 +49,13 @@ class ProjectController extends Controller
         $new_Project = new Project();
         $new_Project->fill($form_data);
         $new_Project->save();
+
+        if( $request->hasFile('project_image') ) {
+
+            $imagePath = Storage::disk('public')->put('project_images', $request->project_image);
+
+            $form_data['project_image'] = $imagePath;
+        }
 
         return redirect()->route('admin.projects.index');
     }
@@ -98,6 +107,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
         $project->delete();
 
         return redirect()->route('admin.projects.index');

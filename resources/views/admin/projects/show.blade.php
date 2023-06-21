@@ -149,7 +149,8 @@
 </div>
 <div class="container mt-5">
   <div class="container">
-    <img src="{{ $project->image }}" class="img-fluid rounded-3" alt="{{ $project->title_project }} hero image">
+    {{-- <img src="{{ $project->image }}" class="img-fluid rounded-3" alt="{{ $project->title_project }} hero image"> --}}
+    <img src="{{ asset('storage' . $project->project_image) }}" class="img-fluid rounded-3" alt="{{ $project->title_project }} hero image">
   </div>
   <div class="container mt-5">
     <h4>{{ $project->title_project }}</h4>

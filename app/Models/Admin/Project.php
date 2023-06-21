@@ -16,6 +16,7 @@ class Project extends Model
         'description_project',
         'slug',
         'image',
+        'project_image',
         'client',
     ];
 }

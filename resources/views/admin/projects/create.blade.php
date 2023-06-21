@@ -110,7 +110,7 @@
 <div class="container mt-5">
   <h2>Create Project</h2>
   <div class="container-fluid mt-4">
-    <form action="{{ route('admin.projects.store')}}" method="POST">
+    <form action="{{ route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-floating mb-3">
@@ -128,6 +128,10 @@
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="Change image hero" name="image">
             <label for="floatingInput">URL: Image Hero Project</label>
+        </div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Insert image file</label>
+          <input class="form-control" type="file" id="formFile" name="project_image">
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="Change client name" name="client">
