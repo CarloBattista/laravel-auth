@@ -47,7 +47,8 @@ class ProjectController extends Controller
         $form_data = $request->all();
 
         $new_Project = new Project();
-        if( $request->hasFile('project_image') ) {
+
+        if ($request->hasFile('project_image')) {
 
             $imagePath = Storage::disk('public')->put('project_images', $request->project_image);
 
@@ -55,9 +56,9 @@ class ProjectController extends Controller
         }
 
         $new_Project->fill($form_data);
-        
+
         $new_Project->save();
-        
+
 
 
         return redirect()->route('admin.projects.index');
@@ -97,6 +98,18 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $form_data = $request->all();
+
+        if ($request->hasFile('project_image')) {
+
+            if( $project->project_image ){
+                Storage::delete($project->project_image);
+            }
+
+            $imagePath = Storage::disk('public')->put('project_images', $request->project_image);
+
+            $form_data['project_image'] = $imagePath;
+        }
+
         $project->update($form_data);
 
         return redirect()->route('admin.projects.index');
@@ -110,6 +123,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        if ($project->project_image) {
+            Storage::delete($project->project_image);
+        }
 
         $project->delete();
 

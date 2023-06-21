@@ -110,7 +110,7 @@
 <div class="container mt-5">
   <h2>Edit Project</h2>
   <div class="container-fluid mt-4">
-    <form action="{{ route('admin.projects.update', $project)}}" method="POST">
+    <form action="{{ route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -126,9 +126,9 @@
           <textarea class="form-control" placeholder="Change description project" id="floatingTextarea2" name="description_project" style="height: 100px">{{ $project->description_project }}</textarea>
           <label for="floatingTextarea2">Description Project</label>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Change image hero" name="image" value="{{ $project->image }}">
-            <label for="floatingInput">URL: Image Hero Project</label>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Insert image file</label>
+          <input class="form-control" type="file" id="formFile" name="project_image">
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="Change client name" name="client" value="{{ $project->client }}">
